@@ -1,0 +1,15 @@
+	The Python script I created for task 5 used numpy arrays. Caching couldn't be implemented in that version because numpy arrays are 
+unhashable. That version had a runtime of 73 seconds when "mat.in" was generated randomly, using generator.py (the generator script I made 
+for task 5). 
+	After changing the script and making the matrices into lists, the runtime dropped to 58 seconds when "mat.in" was generated 
+completely random. But I had to change it once again because lists are unhashable. 
+	The final version, which is the version I uploaded for task 6, saves matrices as tuples. This way caching is possible and depending 
+on the way "mat.in" is created, the runtime differences can be substantial. When "mat.in" is generated randomly (using the generator script 
+I made for task 5) and caching is not implemented, it has a runtime of 60 seconds. For caching, i used "lru_cache" and applied it to the 
+"count_neighboring_ones" function. If "mat.in" is random and has caching enabled, it has a runtime of 64 seconds. 
+	If the first half of "mat.in" is the same as the second half and the max size of lru_cache is 55.000 (half of all the lines, as 
+"mat.in" has 110.000 lines), the runtime drops to 53 seconds. 
+	If "mat.in" has the same 10.000 lines that repeat themselves in the same order 11 times,the runtime drops to 37 seconds when 
+caching is implemented and lru_cache has a max size of 10,000. If lru_cache is also applied to the "create_matrix" function, the runtime drops 
+even lower, to just 32 seconds. 
+
